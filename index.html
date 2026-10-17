@@ -237,6 +237,20 @@ body:not(.opened) > .music {visibility:hidden}
   .envelope-seal { top: 50% !important; }
 }
 
+
+/* Final typography refinement */
+.envelope-paper p {
+  font-family: 'Amiri', serif !important;
+  font-size: clamp(16px, 4.1vw, 19px) !important;
+  font-weight: 700 !important;
+  letter-spacing: .1px !important;
+  color: #79523b !important;
+  margin: 8px 0 10px !important;
+}
+.envelope-seal {
+  font-size: 0 !important;
+}
+
 </style>
 </head>
 <body>
@@ -252,7 +266,7 @@ body:not(.opened) > .music {visibility:hidden}
     </div>
     <div class="envelope-flap"></div>
     <div class="gold-ribbon">دعوة زفاف</div>
-    <div class="envelope-seal">خ & ط</div>
+    <div class="envelope-seal" aria-hidden="true"></div>
     <button class="open-invite" id="openInvite" aria-label="اضغط لفتح الدعوة">افتح الدعوة</button>
   </div>
   <div class="envelope-caption">اضغط على الظرف لفتح الدعوة والاستماع إلى الموسيقى</div>
