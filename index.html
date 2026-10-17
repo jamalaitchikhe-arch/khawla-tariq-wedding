@@ -178,6 +178,65 @@ body:not(.opened) > .music {visibility:hidden}
   .envelope-seal { top: 69%; }
 }
 
+
+/* Discreet gift-ribbon decoration: top-right corner, away from all lettering */
+.gold-ribbon {
+  top: 9% !important;
+  right: 7% !important;
+  left: auto !important;
+  width: 58px !important;
+  height: 24px !important;
+  z-index: 5 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+  background: linear-gradient(180deg,#f8e7a6,#c59a3b 45%,#f5d778 60%,#9b6e20) !important;
+  border: 1px solid #f5df99 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 2px 5px #21030844 !important;
+  opacity: .88 !important;
+}
+.gold-ribbon:before, .gold-ribbon:after {
+  content: "" !important;
+  position: absolute !important;
+  top: -7px !important;
+  width: 17px !important;
+  height: 13px !important;
+  background: linear-gradient(135deg,#f8e7a6,#c59a3b) !important;
+  border: 1px solid #f5df99 !important;
+  border-radius: 12px 12px 3px 12px !important;
+}
+.gold-ribbon:before {
+  left: 11px !important; right: auto !important;
+  transform: rotate(-28deg) !important;
+}
+.gold-ribbon:after {
+  right: 11px !important; left: auto !important;
+  transform: rotate(28deg) scaleX(-1) !important;
+}
+.envelope-seal {
+  top: 50% !important;
+  width: 42px !important;
+  height: 42px !important;
+  font-size: 17px !important;
+}
+.envelope-paper {
+  padding: 18px 12px !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+.envelope-paper h2 {
+  white-space: normal !important;
+  line-height: 1.45 !important;
+  margin: 8px 0 !important;
+  font-size: clamp(32px, 8.2vw, 46px) !important;
+}
+.envelope-paper p, .envelope-paper .small { line-height: 1.8 !important; }
+@media (max-width:480px) {
+  .gold-ribbon { top: 9% !important; right: 7% !important; }
+  .envelope-seal { top: 50% !important; }
+}
+
 </style>
 </head>
 <body>
