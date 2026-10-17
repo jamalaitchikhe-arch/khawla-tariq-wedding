@@ -53,10 +53,153 @@ footer{padding:18px;text-align:center;color:#8d9a8f;font-size:11px;background:#2
 @keyframes rotate{to{transform:rotate(360deg)}}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes fall{to{transform:translateY(110vh) rotate(560deg);opacity:0}}
 @media(max-width:480px){.frame{padding:44px 14px}.time{min-width:72px;padding:14px 8px}.time strong{font-size:29px}section{padding:68px 18px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Luxury Moroccan invitation envelope */
+body:not(.opened) > header,
+body:not(.opened) > section,
+body:not(.opened) > footer,
+body:not(.opened) > .music {visibility:hidden}
+.envelope-screen{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at center,#8d1725 0%,#4a0710 70%,#220308 100%);transition:opacity .8s ease,visibility .8s ease}
+.envelope-screen:before{content:"";position:absolute;inset:14px;border:1px solid #e2bd67aa;pointer-events:none}
+.envelope-screen:after{content:"✦　❋　✦";position:absolute;top:26px;left:50%;transform:translateX(-50%);color:#e2bd67;font-size:19px;letter-spacing:8px}
+.envelope-screen.gone{opacity:0;visibility:hidden;pointer-events:none}
+.envelope{position:relative;width:min(88vw,430px);height:min(65vh,330px);min-height:270px;perspective:1200px;filter:drop-shadow(0 24px 32px #16020788)}
+.envelope-back{position:absolute;inset:0;background:linear-gradient(145deg,#a51d2c,#620b17 65%,#3b080e);border:2px solid #e2bd67;outline:1px solid #e2bd6744;outline-offset:6px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border-radius:5px}
+.envelope-paper{position:absolute;left:7%;right:7%;top:8%;height:84%;background:#fff3dc;color:#5a0b15;border:1px solid #e2bd67;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;box-shadow:0 4px 15px #21030855}
+.envelope-paper .small{font-family:'Amiri',serif;color:#9d792f;font-size:17px}
+.envelope-paper h2{font-family:'Amiri',serif;font-size:clamp(35px,9vw,54px);font-weight:400;line-height:1.1;margin:10px 0;color:#650d18}
+.envelope-paper p{font-size:12px;margin:8px 0;color:#77533b}
+.envelope-flap{position:absolute;z-index:4;inset:0 0 auto;height:58%;background:linear-gradient(160deg,#c22b3b,#720e1b);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform 1s ease;filter:drop-shadow(0 3px 3px #21030855)}
+.envelope-flap:after{content:"";position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);border-top:2px solid #f4d98c}
+.gold-ribbon{position:absolute;z-index:5;left:0;right:0;top:47%;height:34px;background:linear-gradient(180deg,#f8e7a6,#c59a3b 42%,#f5d778 58%,#9b6e20);border-top:1px solid #fff0b6;border-bottom:1px solid #7b551b;display:grid;place-items:center;color:#5b0b14;font-family:'Amiri',serif;font-size:15px;letter-spacing:1px;box-shadow:0 3px 10px #21030855;transition:opacity .3s ease}
+.gold-ribbon:before,.gold-ribbon:after{content:"";position:absolute;top:-5px;width:26px;height:42px;background:linear-gradient(90deg,#a87a25,#f3d77c,#b4862b);border:1px solid #f5df99}
+.gold-ribbon:before{left:20%}.gold-ribbon:after{right:20%}
+.envelope-seal{position:absolute;z-index:6;left:50%;top:47%;transform:translate(-50%,-50%);width:61px;height:61px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#ffe9a0,#bd8c2c 65%,#81561b);border:2px solid #f7df98;color:#6a0d17;font-family:'Amiri',serif;font-size:23px;box-shadow:0 3px 12px #27050a99}
+.open-invite{position:absolute;z-index:8;inset:0;width:100%;height:100%;border:0;background:transparent;cursor:pointer;color:transparent}
+.envelope-screen.opening .envelope-flap{transform:rotateX(180deg)}
+.envelope-screen.opening .gold-ribbon,.envelope-screen.opening .envelope-seal{opacity:0}
+.envelope-screen.opening .envelope-paper{animation:paperRise 1.2s .2s ease both}
+.envelope-caption{position:absolute;bottom:8%;left:0;right:0;text-align:center;color:#f7e4b1;font-size:13px;letter-spacing:1px}
+@keyframes paperRise{from{transform:translateY(0)}to{transform:translateY(-18px)}}
+
+
+.creator-credit{margin-top:12px;padding-top:12px;border-top:1px solid #d9bb7933;color:#c9ad78;font-size:11px;line-height:1.9;letter-spacing:.3px}
+.creator-credit strong{color:#e2bd67;font-weight:700}
+.creator-credit a{color:#e2bd67;text-decoration:none;direction:ltr;display:inline-block}
+
+
+/* Improved mobile envelope typography and clear spacing */
+.envelope {
+  width: min(88vw, 430px);
+  height: min(65vh, 330px);
+  min-height: 270px;
+}
+.envelope-paper {
+  left: 7%;
+  right: 7%;
+  top: 8%;
+  height: 84%;
+  padding: 18px 14px 56px;
+  justify-content: flex-start;
+  gap: 0;
+  overflow: hidden;
+}
+.envelope-paper .small:first-child {
+  margin-top: 7px;
+  font-size: clamp(15px, 4vw, 18px);
+}
+.envelope-paper h2 {
+  position: relative;
+  z-index: 7;
+  font-size: clamp(34px, 8.4vw, 49px);
+  line-height: 1.35;
+  margin: 12px 0 8px;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+.envelope-paper p {
+  position: relative;
+  z-index: 7;
+  font-size: clamp(11px, 3vw, 13px);
+  margin: 5px 0 8px;
+}
+.envelope-paper .small:last-child {
+  position: relative;
+  z-index: 7;
+  font-size: clamp(17px, 4.6vw, 22px);
+  margin-top: 7px;
+}
+.gold-ribbon {
+  top: 66%;
+  height: 27px;
+  z-index: 5;
+  font-size: 12px;
+  opacity: .98;
+}
+.gold-ribbon:before, .gold-ribbon:after {
+  top: -4px;
+  width: 18px;
+  height: 34px;
+}
+.gold-ribbon:before { left: 18%; }
+.gold-ribbon:after { right: 18%; }
+.envelope-seal {
+  top: 66%;
+  width: 47px;
+  height: 47px;
+  font-size: 19px;
+  z-index: 6;
+}
+.envelope-flap {
+  z-index: 4;
+}
+.envelope-paper {
+  z-index: 2;
+}
+.envelope-flap:after {
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .envelope {
+    width: min(88vw, 430px);
+    height: min(65vh, 330px);
+    min-height: 270px;
+  }
+  .envelope-paper {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 48px;
+  }
+  .envelope-paper h2 {
+    font-size: clamp(31px, 8vw, 43px);
+    margin-top: 12px;
+  }
+  .gold-ribbon { top: 69%; }
+  .envelope-seal { top: 69%; }
+}
+
 </style>
 </head>
 <body>
-<button class="music" id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الموسيقى"><span>♫</span> تشغيل موسيقى العرس</button>
+
+<div class="envelope-screen" id="envelopeScreen" aria-label="افتح دعوة الزفاف">
+  <div class="envelope">
+    <div class="envelope-back"></div>
+    <div class="envelope-paper">
+      <div class="small">بكل الحب والفرح</div>
+      <h2>خولة <span style="color:#b58a35">و</span> طارق</h2>
+      <p>دعوة زفاف خاصة بكم</p>
+      <div class="small">24 أكتوبر 2026</div>
+    </div>
+    <div class="envelope-flap"></div>
+    <div class="gold-ribbon">دعوة زفاف</div>
+    <div class="envelope-seal">خ & ط</div>
+    <button class="open-invite" id="openInvite" aria-label="اضغط لفتح الدعوة">افتح الدعوة</button>
+  </div>
+  <div class="envelope-caption">اضغط على الظرف لفتح الدعوة والاستماع إلى الموسيقى</div>
+</div>
+
+<button class="music" id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الموسيقى"><span>♫</span> إيقاف الموسيقى</button>
 <audio id="weddingAudio" preload="auto" loop playsinline src="music.mp3"></audio>
 <header class="hero">
   <div class="frame">
@@ -66,7 +209,7 @@ footer{padding:18px;text-align:center;color:#8d9a8f;font-size:11px;background:#2
     <h1>خولة</h1><span class="amp">و</span><h1>طارق</h1>
     <p class="invite">بكل المودة والسرور، نتشرّف بدعوتكم لمشاركتنا فرحة العمر، والاحتفال معنا ببداية حكاية جديدة عنوانها المحبة والوفاء.</p>
     <div class="date">24 · 10 · 2026</div>
-    <p style="font-size:11px;color:#e2bd67;margin:18px 0 0">موسيقى أندلسية الطابع · يمكن إيقافها من الزر أعلى الصفحة</p>
+    <p style="font-size:11px;color:#e2bd67;margin:18px 0 0">موسيقى العرس · يمكن إيقافها من الزر أعلى الصفحة</p>
     <a class="down" href="#count">تفاصيل الدعوة <span>⌄</span></a>
   </div>
 </header>
@@ -88,7 +231,8 @@ footer{padding:18px;text-align:center;color:#8d9a8f;font-size:11px;background:#2
   <p class="lead">حضوركم يكمّل فرحتنا ويمنح يومنا معنى أجمل. يسعدنا أن تشاركونا هذه اللحظات المميزة.</p>
   <div class="detail-card">
     <div class="detail-icon">⌖</div>
-    <h3>موقع حفل الزفاف</h3>
+    <h3>قاعة مربح</h3>
+    <p>مركز تارودانت، قرب المحطة الطرقية.</p>
     <p>اضغطوا على الزر أدناه لفتح الموقع على خرائط Google والحصول على الاتجاهات.</p>
     <a class="btn" href="https://maps.app.goo.gl/H3QokLPu1FZKJwcL8?g_st=aw" target="_blank" rel="noopener">عرض الموقع والاتجاهات ↗</a>
   </div>
@@ -100,7 +244,8 @@ footer{padding:18px;text-align:center;color:#8d9a8f;font-size:11px;background:#2
   <p class="lead">نترقّب لقاءكم بقلوب مغمورة بالمحبة، ونسأل الله أن يجعل أيامكم أفراحًا ومسرّات.</p>
   <p style="color:var(--gold);font-family:'Amiri',serif;font-size:25px;margin-top:28px">خولة وطارق</p>
 </section>
-<footer>صُنعت بمحبة ليومنا المميّز · 24 أكتوبر 2026</footer>
+<footer>صُنعت بمحبة ليومنا المميّز · 24 أكتوبر 2026<div class="creator-credit">Created by <strong>ABDOLLAH OUCHIKH</strong> · <a href="tel:0706600479">0706600479</a></div>
+</footer>
 <script>
 // Date-only countdown: no event time has been supplied.
 const target = new Date('2026-10-24T00:00:00');
@@ -113,10 +258,11 @@ tick();setInterval(tick,1000);
 
 const btn=document.getElementById('musicBtn');
 const weddingAudio=document.getElementById('weddingAudio');
+const envelopeScreen=document.getElementById('envelopeScreen');
 let playing=false;
 async function startMusic(){
  try{
-  weddingAudio.volume=0.75;
+  weddingAudio.volume=0.72;
   await weddingAudio.play();
   playing=true;
   btn.innerHTML='<span>Ⅱ</span> إيقاف الموسيقى';
@@ -128,11 +274,17 @@ async function startMusic(){
 function stopMusic(){
  weddingAudio.pause();
  playing=false;
- btn.innerHTML='<span>♫</span> تشغيل موسيقى العرس';
+ btn.innerHTML='<span>♫</span> تشغيل الموسيقى';
 }
 btn.addEventListener('click',()=>{if(playing)stopMusic();else startMusic()});
-// محاولة التشغيل عند فتح الصفحة؛ قد تتطلب المتصفحات نقرة من المدعو.
-window.addEventListener('load',()=>{startMusic()});
+document.getElementById('openInvite').addEventListener('click',async()=>{
+ envelopeScreen.classList.add('opening');
+ // Start the real supplied MP3 directly from the visitor's click, which allows playback in most browsers.
+ await startMusic();
+ document.body.classList.add('opened');
+ setTimeout(()=>envelopeScreen.classList.add('gone'),850);
+ setTimeout(()=>envelopeScreen.remove(),1800);
+});
 
 // Attempt automatic playback on page load. Browsers may block audio until the visitor interacts.
 window.addEventListener('load',()=>{startMusic()});
