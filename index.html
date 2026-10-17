@@ -251,6 +251,103 @@ body:not(.opened) > .music {visibility:hidden}
   font-size: 0 !important;
 }
 
+
+
+
+
+/* Blank gold seal: preserve the circle, remove only the initials */
+.envelope-seal {
+  display: grid !important;
+  visibility: visible !important;
+  position: absolute !important;
+  z-index: 6 !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%,-50%) !important;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  background: radial-gradient(circle at 35% 25%,#ffe9a0,#bd8c2c 65%,#81561b) !important;
+  border: 2px solid #f7df98 !important;
+  box-shadow: 0 3px 12px #27050a99, inset 0 0 0 2px #d6ad50 !important;
+}
+
+
+/* Diagonal gold gift ribbon across the top-right corner */
+.gold-ribbon {
+  top: -1px !important;
+  right: -1px !important;
+  left: auto !important;
+  width: 155px !important;
+  height: 100px !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+  z-index: 5 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: none !important;
+  pointer-events: none !important;
+}
+.gold-ribbon:before {
+  content: "" !important;
+  position: absolute !important;
+  left: 25px !important;
+  right: auto !important;
+  top: 17px !important;
+  width: 155px !important;
+  height: 27px !important;
+  border: 1px solid #f8e7a6 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg,#fff0b0 0%,#e6c15f 28%,#b88427 55%,#f8df8b 78%,#bd8a2b 100%) !important;
+  box-shadow: 0 2px 4px #26030855 !important;
+  transform: rotate(43deg) !important;
+  transform-origin: center center !important;
+}
+.gold-ribbon:after {
+  content: " " !important;
+  position: absolute !important;
+  top: 17px !important;
+  right: 24px !important;
+  left: auto !important;
+  width: 43px !important;
+  height: 36px !important;
+  border-radius: 50% 50% 45% 45% !important;
+  border: 2px solid #f8df99 !important;
+  background:
+    radial-gradient(ellipse at 50% 50%,#ffe9a5 0%,#d9aa45 62%,#94621d 100%) !important;
+  box-shadow: 0 2px 5px #26030866 !important;
+  transform: rotate(25deg) !important;
+}
+/* Keep the ribbon decoration compact on narrow screens */
+@media (max-width: 480px) {
+  .gold-ribbon {
+    width: 118px !important;
+    height: 80px !important;
+  }
+  .gold-ribbon:before {
+    left: 17px !important;
+    top: 14px !important;
+    width: 120px !important;
+    height: 22px !important;
+  }
+  .gold-ribbon:after {
+    top: 13px !important;
+    right: 16px !important;
+    width: 34px !important;
+    height: 29px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -267,7 +364,7 @@ body:not(.opened) > .music {visibility:hidden}
     <div class="envelope-flap"></div>
     <div class="gold-ribbon">دعوة زفاف</div>
     <div class="envelope-seal" aria-hidden="true"></div>
-    <button class="open-invite" id="openInvite" aria-label="اضغط لفتح الدعوة">افتح الدعوة</button>
+<button class="open-invite" id="openInvite" aria-label="اضغط لفتح الدعوة">افتح الدعوة</button>
   </div>
   <div class="envelope-caption">اضغط على الظرف لفتح الدعوة والاستماع إلى الموسيقى</div>
 </div>
